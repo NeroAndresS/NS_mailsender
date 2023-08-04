@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}
+Mailing Lists
+{% endblock %}
+{% block header %}
+Mailing Lists
+{% endblock %}
+{% block content %}
+<ul>
+    {% for mailing_list in mailing_lists %}
+        <li><a href="{% url 'send_email' mailing_list.id %}">{{ mailing_list.name }}</a></li>
+    {% endfor %}
+</ul>
+<h2>Create a New Mailing List:</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Create">
+</form>
+{% endblock %}

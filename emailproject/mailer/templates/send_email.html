@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block head %}
+{{form.media}}
+{% endblock %}
+
+{% block title %}
+Email Composer
+{% endblock %}
+
+{% block header %}
+SEND AN EMAIL
+{% endblock %}
+
+
+{% block content %}
+{% comment %} {% summernote_css %} {% endcomment %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Send">
+    {% comment %} <div>{{form.content|safe}}</div> {% endcomment %}
+</form>
+{% comment %} {% summernote_js %} {% endcomment %}
+{% endblock %}
